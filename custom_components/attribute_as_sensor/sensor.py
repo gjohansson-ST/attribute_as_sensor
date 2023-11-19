@@ -1,18 +1,13 @@
 """Support for displaying attributes as Sensor."""
 from __future__ import annotations
 
-import logging
 from typing import Any
-
-import voluptuous as vol
 
 from homeassistant.components.sensor import (
     CONF_STATE_CLASS,
-    DEVICE_CLASSES_SCHEMA,
-    PLATFORM_SCHEMA as PARENT_PLATFORM_SCHEMA,
-    STATE_CLASSES_SCHEMA,
-    RestoreSensor,
+    SensorDeviceClass,
     SensorEntity,
+    SensorStateClass,
 )
 from homeassistant.config_entries import ConfigEntry
 from homeassistant.const import (
@@ -21,21 +16,14 @@ from homeassistant.const import (
     CONF_DEVICE_CLASS,
     CONF_ENTITY_ID,
     CONF_ICON,
-    CONF_NAME,
-    CONF_UNIQUE_ID,
     CONF_UNIT_OF_MEASUREMENT,
     STATE_UNAVAILABLE,
     STATE_UNKNOWN,
 )
 from homeassistant.core import Event, HomeAssistant, State, callback
-from homeassistant.helpers import config_validation as cv, entity_registry as er
+from homeassistant.helpers import entity_registry as er
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.event import async_track_state_change_event
-from homeassistant.helpers.reload import async_setup_reload_service
-from homeassistant.helpers.typing import ConfigType, DiscoveryInfoType
-
-from . import PLATFORMS
-from .const import DOMAIN
 
 
 async def async_setup_entry(
@@ -80,8 +68,8 @@ class AttributeSensor(SensorEntity):
         entity_id: str,
         attribute: str,
         icon: str | None,
-        device_class: str | None,
-        state_class: str | None,
+        device_class: SensorDeviceClass | None,
+        state_class: SensorStateClass | None,
         uom: str | None,
         name: str,
         unique_id: str | None,
