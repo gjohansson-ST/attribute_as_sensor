@@ -1,7 +1,7 @@
 [![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg?style=for-the-badge&cacheSeconds=3600)](https://github.com/hacs/integration)
-[![size_badge](https://img.shields.io/github/repo-size/gjohansson-ST/sector?style=for-the-badge&cacheSeconds=3600)](https://github.com/gjohansson-ST/sector)
-[![version_badge](https://img.shields.io/github/v/release/gjohansson-ST/sector?label=Latest%20release&style=for-the-badge&cacheSeconds=3600)](https://github.com/gjohansson-ST/sector/releases/latest)
-[![download_badge](https://img.shields.io/github/downloads/gjohansson-ST/sector/total?style=for-the-badge&cacheSeconds=3600)](https://github.com/gjohansson-ST/sector/releases/latest)
+[![size_badge](https://img.shields.io/github/repo-size/gjohansson-ST/attribute_as_sensor?style=for-the-badge&cacheSeconds=3600)](https://github.com/gjohansson-ST/attribute_as_sensor)
+[![version_badge](https://img.shields.io/github/v/release/gjohansson-ST/attribute_as_sensor?label=Latest%20release&style=for-the-badge&cacheSeconds=3600)](https://github.com/gjohansson-ST/attribute_as_sensor/releases/latest)
+[![download_badge](https://img.shields.io/github/downloads/gjohansson-ST/attribute_as_sensor/total?style=for-the-badge&cacheSeconds=3600)](https://github.com/gjohansson-ST/attribute_as_sensor/releases/latest)
 
 
 # Home Assistant create an entities attribute as it's own sensor
@@ -20,13 +20,13 @@
 
 ## Configuration Options
 
-Set once:
+### Set once
 
 - Name: Name of the new entity
 - Entity: From which entity you want to get the attribute
 - Attribute: Which attribute you want as it's own sensor
 
-Options that you can change at any time:
+### Options that you can change at any time
 
 - Icon: Icon to use in frontend
 - Device class: Device class (select from list)
