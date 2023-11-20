@@ -14,7 +14,7 @@
 
 **Last update:** 2023-11-19
 
-**Join the Discussion on Development:** [https://discord.gg/6x8vndTR](https://discord.gg/6x8vndTR)
+**Join the Discussion on Development:** [https://discord.gg/qyBhBArwHN](https://discord.gg/qyBhBArwHN)
 
 ---
 
