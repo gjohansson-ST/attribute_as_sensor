@@ -113,7 +113,7 @@ class AttributeSensor(SensorEntity):
         if (
             new_state is None
             or new_state.state is None
-            or new_state.state == STATE_UNAVAILABLE
+            or new_state.state in [STATE_UNAVAILABLE, STATE_UNKNOWN]
         ):
             self._attr_native_value = STATE_UNKNOWN
             if not update_state:
