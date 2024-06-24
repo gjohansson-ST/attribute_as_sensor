@@ -1,0 +1,42 @@
+{
+    "config": {
+      "step": {
+        "user": {
+          "title": "Lägg till Attribut som Sensor",
+          "description": "Skapa en sensor som får sitt värde från en annan entitets attribut.",
+          "data": {
+            "entity_id": "Entitet",
+            "name": "Namn"
+          }
+        },
+        "attr": {
+          "data": {
+            "attribute": "Attribut",
+            "icon": "Ikon",
+            "device_class": "Enhetsklass",
+            "state_class": "Tillståndsklass",
+            "unit_of_measurement": "Måttenhet"
+          },
+          "data_description": {
+            "attribute": "Välj det attribut som du vill ha som sensor.",
+            "unit_of_measurement": "Välj en måttenhet som är fördefinierad eller skapa din egen."
+          }
+        }
+      }
+    },
+    "options": {
+      "step": {
+        "init": {
+          "data": {
+            "icon": "Ikon",
+            "device_class": "Enhetsklass",
+            "state_class": "Tillståndsklass",
+            "unit_of_measurement": "Måttenhet"
+          },
+          "data_description": {
+            "unit_of_measurement": "Välj en måttenhet som är fördefinierad eller skapa din egen."
+          }
+        }
+      }
+    }
+  }

@@ -5,7 +5,7 @@
           "title": "Add Attribute as Sensor",
           "description": "Create a sensor that derives its value from an attribute of another entity.",
           "data": {
-            "entity_id": "Input entities",
+            "entity_id": "Input entity",
             "name": "Name"
           }
         },
