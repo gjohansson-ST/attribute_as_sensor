@@ -12,7 +12,7 @@
 
 **Date created:** 2023-11-19
 
-**Last update:** 2023-11-19
+**Last update:** 2024-06-24
 
 **Join the Discussion on Development:** [https://discord.gg/qyBhBArwHN](https://discord.gg/qyBhBArwHN)
 
