@@ -1,5 +1,8 @@
 """Support for displaying attributes as Sensor."""
+
 from __future__ import annotations
+
+import logging
 
 from typing import Any
 
@@ -24,6 +27,8 @@ from homeassistant.core import Event, HomeAssistant, State, callback
 from homeassistant.helpers import entity_registry as er
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.event import async_track_state_change_event
+
+_LOGGER = logging.getLogger(__name__)
 
 
 async def async_setup_entry(
@@ -109,24 +114,28 @@ class AttributeSensor(SensorEntity):
     ) -> None:
         """Handle the sensor state changes."""
         new_state: State | None = event.data.get("new_state")
+        _LOGGER.debug("Received new state: %s", new_state)
 
+        self._attr_available = new_state != STATE_UNAVAILABLE
+
+        self._attr_native_value = None
         if (
             new_state is None
             or new_state.state is None
             or new_state.state in [STATE_UNAVAILABLE, STATE_UNKNOWN]
         ):
-            self._attr_native_value = STATE_UNKNOWN
             if not update_state:
+                _LOGGER.debug("Ignoring state update")
                 return
 
-        self._attr_native_value = STATE_UNKNOWN
-
-        if (
-            new_state
-            and new_state.attributes
-            and (value := new_state.attributes.get(self._attribute))
-        ):
-            self._attr_native_value = value
+        _LOGGER.debug("State attributes: %s", new_state.attributes)
+        if self._attribute in new_state.attributes:
+            self._attr_native_value = new_state.attributes[self._attribute]
+            _LOGGER.debug(
+                "Setting attribute (%s) value: %s",
+                self._attribute,
+                self._attr_native_value,
+            )
 
         self.async_write_ha_state()
         return
