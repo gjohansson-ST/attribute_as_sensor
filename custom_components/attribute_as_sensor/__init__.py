@@ -1,9 +1,12 @@
 """The Attribute as Sensor component."""
 
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import CONF_VALUE_TEMPLATE, Platform
+from homeassistant.const import CONF_ENTITY_ID, CONF_VALUE_TEMPLATE, Platform
 from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import ConfigEntryError, TemplateError
+from homeassistant.helpers.device import (
+    async_remove_stale_devices_links_keep_entity_device,
+)
 from homeassistant.helpers.template import Template
 
 PLATFORMS = [Platform.SENSOR]
@@ -11,6 +14,12 @@ PLATFORMS = [Platform.SENSOR]
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
     """Set up Attribute as sensor from a config entry."""
+
+    async_remove_stale_devices_links_keep_entity_device(
+        hass,
+        entry.entry_id,
+        entry.options[CONF_ENTITY_ID],
+    )
 
     if (value_template := entry.options.get(CONF_VALUE_TEMPLATE)):
         value_template = Template(value_template, hass)
