@@ -25,6 +25,7 @@ from homeassistant.const import (
 )
 from homeassistant.core import Event, HomeAssistant, State, callback
 from homeassistant.helpers import entity_registry as er
+from homeassistant.helpers.device import async_device_info_to_link_from_entity
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.event import async_track_state_change_event
 from homeassistant.helpers.template import Template
@@ -54,6 +55,7 @@ async def async_setup_entry(
     async_add_entities(
         [
             AttributeSensor(
+                hass,
                 entity_id,
                 attribute,
                 icon,
@@ -75,6 +77,7 @@ class AttributeSensor(SensorEntity):
 
     def __init__(
         self,
+        hass: HomeAssistant,
         entity_id: str,
         attribute: str,
         icon: str | None,
@@ -90,6 +93,10 @@ class AttributeSensor(SensorEntity):
         self._entity_id = entity_id
         self._attribute = attribute
         self._attr_name = name
+        self._attr_device_info = async_device_info_to_link_from_entity(
+            hass,
+            entity_id,
+        )
 
         self._attr_device_class = device_class
         self._attr_icon = icon
