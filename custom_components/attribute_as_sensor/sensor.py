@@ -48,7 +48,7 @@ async def async_setup_entry(
     state_class = config_entry.options.get(CONF_STATE_CLASS)
     uom = config_entry.options.get(CONF_UNIT_OF_MEASUREMENT)
 
-    if (value_template := config_entry.options.get(CONF_VALUE_TEMPLATE)):
+    if value_template := config_entry.options.get(CONF_VALUE_TEMPLATE):
         value_template = Template(value_template, hass)
 
     async_add_entities(
@@ -135,11 +135,9 @@ class AttributeSensor(SensorEntity):
             if not update_state:
                 _LOGGER.debug("Ignoring state update")
                 return
-            
-        
 
-        _LOGGER.debug("State attributes: %s", new_state.attributes)
-        if self._attribute in new_state.attributes:
+        if new_state and self._attribute in new_state.attributes:
+            _LOGGER.debug("State attributes: %s", new_state.attributes)
 
             value = new_state.attributes[self._attribute]
             if self._value_template is not None:
