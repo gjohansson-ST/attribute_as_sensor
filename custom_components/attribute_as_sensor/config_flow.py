@@ -1,11 +1,11 @@
 """Config flow for Attribute as Sensor integration."""
+
 from __future__ import annotations
 
 from collections.abc import Mapping
 from typing import Any, cast
 
 import voluptuous as vol
-
 from homeassistant.components.sensor import (
     CONF_STATE_CLASS,
     CONF_UNIT_OF_MEASUREMENT,
@@ -18,6 +18,7 @@ from homeassistant.const import (
     CONF_ENTITY_ID,
     CONF_ICON,
     CONF_NAME,
+    CONF_VALUE_TEMPLATE,
     UnitOfTemperature,
 )
 from homeassistant.helpers import selector
@@ -41,6 +42,7 @@ CONFIG_SCHEMA = vol.Schema(
 
 OPTIONS_SCHEMA = vol.Schema(
     {
+        vol.Optional(CONF_VALUE_TEMPLATE): selector.TemplateSelector(),
         vol.Optional(CONF_ICON): selector.IconSelector(),
         vol.Optional(CONF_DEVICE_CLASS): selector.SelectSelector(
             selector.SelectSelectorConfig(
