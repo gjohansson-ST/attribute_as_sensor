@@ -15,11 +15,13 @@
             "icon": "Ikon",
             "device_class": "Enhetsklass",
             "state_class": "Tillståndsklass",
-            "unit_of_measurement": "Måttenhet"
+            "unit_of_measurement": "Måttenhet",
+            "value_template": "Värdemall"
           },
           "data_description": {
             "attribute": "Välj det attribut som du vill ha som sensor.",
-            "unit_of_measurement": "Välj en måttenhet som är fördefinierad eller skapa din egen."
+            "unit_of_measurement": "Välj en måttenhet som är fördefinierad eller skapa din egen.",
+            "value_template": "En mall för att återge sensorns värde baserat på filens innehåll."
           }
         }
       }
@@ -31,10 +33,12 @@
             "icon": "Ikon",
             "device_class": "Enhetsklass",
             "state_class": "Tillståndsklass",
-            "unit_of_measurement": "Måttenhet"
+            "unit_of_measurement": "Måttenhet",
+            "value_template": "Värdemall"
           },
           "data_description": {
-            "unit_of_measurement": "Välj en måttenhet som är fördefinierad eller skapa din egen."
+            "unit_of_measurement": "Välj en måttenhet som är fördefinierad eller skapa din egen.",
+            "value_template": "En mall för att återge sensorns värde baserat på filens innehåll."
           }
         }
       }
