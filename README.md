@@ -12,7 +12,7 @@
 
 **Date created:** 2023-11-19
 
-**Last update:** 2024-07-18
+**Last update:** 2024-07-26
 
 **Join the Discussion on Development:** [https://discord.gg/qyBhBArwHN](https://discord.gg/qyBhBArwHN)
 
@@ -28,6 +28,7 @@
 
 ### Options that you can change at any time
 
+- Value template: Use a template to manipulate the retrieved attribute from the source entity
 - Icon: Icon to use in frontend
 - Device class: Device class (select from list)
 - State class: State class (select from list)

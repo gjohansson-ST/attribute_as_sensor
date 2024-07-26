@@ -3,7 +3,6 @@
 from __future__ import annotations
 
 import logging
-
 from typing import Any
 
 from homeassistant.components.sensor import (
@@ -20,6 +19,7 @@ from homeassistant.const import (
     CONF_ENTITY_ID,
     CONF_ICON,
     CONF_UNIT_OF_MEASUREMENT,
+    CONF_VALUE_TEMPLATE,
     STATE_UNAVAILABLE,
     STATE_UNKNOWN,
 )
@@ -27,6 +27,7 @@ from homeassistant.core import Event, HomeAssistant, State, callback
 from homeassistant.helpers import entity_registry as er
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.event import async_track_state_change_event
+from homeassistant.helpers.template import Template
 
 _LOGGER = logging.getLogger(__name__)
 
@@ -47,6 +48,9 @@ async def async_setup_entry(
     state_class = config_entry.options.get(CONF_STATE_CLASS)
     uom = config_entry.options.get(CONF_UNIT_OF_MEASUREMENT)
 
+    if (value_template := config_entry.options.get(CONF_VALUE_TEMPLATE)):
+        value_template = Template(value_template, hass)
+
     async_add_entities(
         [
             AttributeSensor(
@@ -58,6 +62,7 @@ async def async_setup_entry(
                 uom,
                 config_entry.title,
                 config_entry.entry_id,
+                value_template,
             )
         ]
     )
@@ -78,6 +83,7 @@ class AttributeSensor(SensorEntity):
         uom: str | None,
         name: str,
         unique_id: str | None,
+        value_template: Template | None,
     ) -> None:
         """Initialize the sensor."""
         self._attr_unique_id = unique_id
@@ -89,6 +95,8 @@ class AttributeSensor(SensorEntity):
         self._attr_icon = icon
         self._attr_native_unit_of_measurement = uom
         self._attr_state_class = state_class
+
+        self._value_template = value_template
 
     async def async_added_to_hass(self) -> None:
         """Handle added to Hass."""
@@ -127,10 +135,18 @@ class AttributeSensor(SensorEntity):
             if not update_state:
                 _LOGGER.debug("Ignoring state update")
                 return
+            
+        
 
         _LOGGER.debug("State attributes: %s", new_state.attributes)
         if self._attribute in new_state.attributes:
-            self._attr_native_value = new_state.attributes[self._attribute]
+
+            value = new_state.attributes[self._attribute]
+            if self._value_template is not None:
+                value = self._value_template.async_render_with_possible_json_value(
+                    new_state.attributes[self._attribute], None
+                )
+            self._attr_native_value = value
             _LOGGER.debug(
                 "Setting attribute (%s) value: %s",
                 self._attribute,
