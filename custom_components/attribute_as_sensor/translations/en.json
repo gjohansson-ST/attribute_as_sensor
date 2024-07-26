@@ -15,11 +15,13 @@
             "icon": "Icon",
             "device_class": "Device Class",
             "state_class": "State Class",
-            "unit_of_measurement": "Unit of Measurement"
+            "unit_of_measurement": "Unit of Measurement",
+            "value_template": "Value template"
           },
           "data_description": {
             "attribute": "Select the attribute that you would like to use as a sensor.",
-            "unit_of_measurement": "Select a pre-defined unit of measurement or customize your own."
+            "unit_of_measurement": "Select a pre-defined unit of measurement or customize your own.",
+            "value_template": "Define a template to extract the value from the attribute."
           }
         }
       }
@@ -31,10 +33,12 @@
             "icon": "Icon",
             "device_class": "Device Class",
             "state_class": "State Class",
-            "unit_of_measurement": "Unit of Measurement"
+            "unit_of_measurement": "Unit of Measurement",
+            "value_template": "Value template"
           },
           "data_description": {
-            "unit_of_measurement": "Select a pre-defined unit of measurement or customize your own."
+            "unit_of_measurement": "Select a pre-defined unit of measurement or customize your own.",
+            "value_template": "Define a template to extract the value from the attribute."
           }
         }
       }
