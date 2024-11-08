@@ -1,0 +1,46 @@
+{
+  "config": {
+    "step": {
+      "user": {
+        "title": "Adicionar Atributo como Sensor",
+        "description": "Criar um sensor que deriva o seu valor de um atributo de outra entidade.",
+        "data": {
+          "entity_id": "Entidade de entrada",
+          "name": "Nome"
+        }
+      },
+      "attr": {
+        "data": {
+          "attribute": "Atributo",
+          "icon": "Ícone",
+          "device_class": "Classe do Dispositivo",
+          "state_class": "Classe de Estado",
+          "unit_of_measurement": "Unidade de Medida",
+          "value_template": "Modelo de Valor"
+        },
+        "data_description": {
+          "attribute": "Selecione o atributo que gostaria de usar como sensor.",
+          "unit_of_measurement": "Selecione uma unidade de medida predefinida ou personalize a sua própria.",
+          "value_template": "Defina um modelo para extrair o valor do atributo."
+        }
+      }
+    }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "icon": "Ícone",
+          "device_class": "Classe do Dispositivo",
+          "state_class": "Classe de Estado",
+          "unit_of_measurement": "Unidade de Medida",
+          "value_template": "Modelo de Valor"
+        },
+        "data_description": {
+          "unit_of_measurement": "Selecione uma unidade de medida predefinida ou personalize a sua própria.",
+          "value_template": "Defina um modelo para extrair o valor do atributo."
+        }
+      }
+    }
+  }
+}
