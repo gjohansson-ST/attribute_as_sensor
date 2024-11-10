@@ -27,7 +27,10 @@ from homeassistant.core import Event, HomeAssistant, State, callback
 from homeassistant.helpers import entity_registry as er
 from homeassistant.helpers.device import async_device_info_to_link_from_entity
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
-from homeassistant.helpers.event import async_track_state_change_event
+from homeassistant.helpers.event import (
+    async_track_state_change_event,
+    async_track_state_report_event,
+)
 from homeassistant.helpers.template import Template
 
 _LOGGER = logging.getLogger(__name__)
@@ -109,6 +112,11 @@ class AttributeSensor(SensorEntity):
         """Handle added to Hass."""
         self.async_on_remove(
             async_track_state_change_event(
+                self.hass, self._entity_id, self._async_attribute_sensor_state_listener
+            )
+        )
+        self.async_on_remove(
+            async_track_state_report_event(
                 self.hass, self._entity_id, self._async_attribute_sensor_state_listener
             )
         )
