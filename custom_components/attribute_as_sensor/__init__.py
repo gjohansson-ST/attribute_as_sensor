@@ -1,7 +1,7 @@
 """The Attribute as Sensor component."""
 
 from homeassistant.config_entries import ConfigEntry
-from homeassistant.const import CONF_ENTITY_ID, CONF_VALUE_TEMPLATE, Platform
+from homeassistant.const import CONF_ENTITY_ID, CONF_VALUE_TEMPLATE
 from homeassistant.core import HomeAssistant
 from homeassistant.exceptions import ConfigEntryError, TemplateError
 from homeassistant.helpers.device import (
@@ -9,7 +9,7 @@ from homeassistant.helpers.device import (
 )
 from homeassistant.helpers.template import Template
 
-PLATFORMS = [Platform.SENSOR]
+from .const import PLATFORMS
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
