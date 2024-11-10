@@ -10,7 +10,7 @@
 
 **Description:** "Create an entity from another entities attribute."
 
-**Version:** 1.4
+**Version:** 1.5
 
 **Date created:** 2023-11-19
 
