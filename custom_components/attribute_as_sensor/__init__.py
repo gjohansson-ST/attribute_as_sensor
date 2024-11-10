@@ -21,7 +21,7 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         entry.options[CONF_ENTITY_ID],
     )
 
-    if (value_template := entry.options.get(CONF_VALUE_TEMPLATE)):
+    if value_template := entry.options.get(CONF_VALUE_TEMPLATE):
         value_template = Template(value_template, hass)
         try:
             value_template.ensure_valid()
