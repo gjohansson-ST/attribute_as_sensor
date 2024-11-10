@@ -151,6 +151,13 @@ class AttributeSensor(SensorEntity):
                 _LOGGER.debug("Ignoring state update")
                 return
 
+        if self._attribute not in new_state.attributes:
+            _LOGGER.error(
+                "Attribute (%s) not found in state attributes for entity %s",
+                self._attribute,
+                self._entity_id,
+            )
+
         if new_state and self._attribute in new_state.attributes:
             _LOGGER.debug("State attributes: %s", new_state.attributes)
 
