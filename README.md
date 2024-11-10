@@ -1,4 +1,4 @@
-[![hacs_badge](https://img.shields.io/badge/HACS-Custom-orange.svg?style=for-the-badge&cacheSeconds=3600)](https://github.com/hacs/integration)
+[![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg?style=for-the-badge&cacheSeconds=3600)](https://github.com/hacs/integration)
 [![size_badge](https://img.shields.io/github/repo-size/gjohansson-ST/attribute_as_sensor?style=for-the-badge&cacheSeconds=3600)](https://github.com/gjohansson-ST/attribute_as_sensor)
 [![version_badge](https://img.shields.io/github/v/release/gjohansson-ST/attribute_as_sensor?label=Latest%20release&style=for-the-badge&cacheSeconds=3600)](https://github.com/gjohansson-ST/attribute_as_sensor/releases/latest)
 [![download_badge](https://img.shields.io/github/downloads/gjohansson-ST/attribute_as_sensor/total?style=for-the-badge&cacheSeconds=3600)](https://github.com/gjohansson-ST/attribute_as_sensor/releases/latest)
@@ -14,7 +14,7 @@
 
 **Date created:** 2023-11-19
 
-**Last update:** 2024-07-26
+**Last update:** 2024-11-10
 
 **Join the Discussion on Development:** [https://discord.gg/qyBhBArwHN](https://discord.gg/qyBhBArwHN)
 
@@ -57,3 +57,7 @@ Add as [custom repository](https://hacs.xyz/docs/faq/custom_repositories) to HAC
 After installation go to "Devices & services" and then "helper" page in HA, press "+ Create helper" and find "Attribute as Sensor"
 Follow onscreen information for the required information
 No restart needed
+
+## Contributions are more than welcome
+
+If not for code, maybe add a language file for your language.
