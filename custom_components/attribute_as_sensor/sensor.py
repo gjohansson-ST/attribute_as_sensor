@@ -149,7 +149,6 @@ class AttributeSensor(SensorEntity):
                 self._attribute,
                 self._entity_id,
             )
-            return
 
         if new_state and self._attribute in new_state.attributes:
             _LOGGER.debug("State attributes: %s", new_state.attributes)
