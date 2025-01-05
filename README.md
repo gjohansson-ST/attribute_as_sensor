@@ -10,11 +10,11 @@
 
 **Description:** "Create an entity from another entities attribute."
 
-**Version:** 1.5
+**Version:** 1.6
 
 **Date created:** 2023-11-19
 
-**Last update:** 2024-11-10
+**Last update:** 2025-01-05
 
 **Join the Discussion on Development:** [https://discord.gg/qyBhBArwHN](https://discord.gg/qyBhBArwHN)
 
@@ -26,10 +26,10 @@
 
 - Name: Name of the new entity
 - Entity: From which entity you want to get the attribute
-- Attribute: Which attribute you want as it's own sensor
 
 ### Options that you can change at any time
 
+- Attribute: Which attribute you want as it's own sensor
 - Value template: Use a template to manipulate the retrieved attribute from the source entity
 - Icon: Icon to use in frontend
 - Device class: Device class (select from list)
@@ -61,3 +61,4 @@ No restart needed
 ## Contributions are more than welcome
 
 If not for code, maybe add a language file for your language.
+Use `string.json` provided by the integration as a template for adding another language.
