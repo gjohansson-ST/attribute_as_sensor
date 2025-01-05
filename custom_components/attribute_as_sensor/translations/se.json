@@ -42,5 +42,10 @@
           }
         }
       }
+    },
+    "exceptions": {
+      "template_not_valid": {
+        "message": "Värdemallen {template} är inte giltig, uppdatera hjälparens alternativ och korrigera värdemallen"
+      }
     }
   }

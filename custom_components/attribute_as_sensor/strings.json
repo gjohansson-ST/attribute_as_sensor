@@ -1,46 +1,51 @@
 {
-    "config": {
-      "step": {
-        "user": {
-          "title": "Add Attribute as Sensor",
-          "description": "Create a sensor that derives its value from an attribute of another entity.",
-          "data": {
-            "entity_id": "Input entities",
-            "name": "Name"
-          }
-        },
-        "attr": {
-          "data": {
-            "attribute": "Attribute",
-            "icon": "Icon",
-            "device_class": "Device Class",
-            "state_class": "State Class",
-            "unit_of_measurement": "Unit of Measurement",
-            "value_template": "Value template"
-          },
-          "data_description": {
-            "attribute": "Select the attribute that you would like to use as a sensor.",
-            "unit_of_measurement": "Select a pre-defined unit of measurement or customize your own.",
-            "value_template": "Define a template to extract the value from the attribute."
-          }
+  "config": {
+    "step": {
+      "user": {
+        "title": "Add Attribute as Sensor",
+        "description": "Create a sensor that derives its value from an attribute of another entity.",
+        "data": {
+          "entity_id": "Input entity",
+          "name": "Name"
         }
-      }
-    },
-    "options": {
-      "step": {
-        "init": {
-          "data": {
-            "icon": "[%key:component::attribute_as_sensor::config::step::attr::data::icon%]",
-            "device_class": "[%key:component::attribute_as_sensor::config::step::attr::data::device_class%]",
-            "state_class": "[%key:component::attribute_as_sensor::config::step::attr::data::state_class%]",
-            "unit_of_measurement": "[%key:component::attribute_as_sensor::config::step::attr::data::unit_of_measurement%]",
-            "value_template": "[%key:component::attribute_as_sensor::config::step::attr::data::value_template%]"
-          },
-          "data_description": {
-            "unit_of_measurement": "[%key:component::attribute_as_sensor::config::step::attr::data_description::unit_of_measurement%]",
-            "value_template": "[%key:component::attribute_as_sensor::config::step::attr::data_description::value_template%]"
-          }
+      },
+      "attr": {
+        "data": {
+          "attribute": "Attribute",
+          "icon": "Icon",
+          "device_class": "Device Class",
+          "state_class": "State Class",
+          "unit_of_measurement": "Unit of Measurement",
+          "value_template": "Value template"
+        },
+        "data_description": {
+          "attribute": "Select the attribute that you would like to use as a sensor.",
+          "unit_of_measurement": "Select a pre-defined unit of measurement or customize your own.",
+          "value_template": "Define a template to extract the value from the attribute."
         }
       }
     }
+  },
+  "options": {
+    "step": {
+      "init": {
+        "data": {
+          "icon": "Icon",
+          "device_class": "Device Class",
+          "state_class": "State Class",
+          "unit_of_measurement": "Unit of Measurement",
+          "value_template": "Value template"
+        },
+        "data_description": {
+          "unit_of_measurement": "Select a pre-defined unit of measurement or customize your own.",
+          "value_template": "Define a template to extract the value from the attribute."
+        }
+      }
+    }
+  },
+  "exceptions": {
+    "template_not_valid": {
+      "message": "The template {template} is not valid, please update the helper options to provide a valid template"
+    }
   }
+}

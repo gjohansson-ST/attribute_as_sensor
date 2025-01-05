@@ -9,7 +9,7 @@ from homeassistant.helpers.device import (
 )
 from homeassistant.helpers.template import Template
 
-from .const import PLATFORMS
+from .const import DOMAIN, PLATFORMS
 
 
 async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
@@ -26,7 +26,11 @@ async def async_setup_entry(hass: HomeAssistant, entry: ConfigEntry) -> bool:
         try:
             value_template.ensure_valid()
         except TemplateError as ex:
-            raise ConfigEntryError from ex
+            raise ConfigEntryError(
+                translation_domain=DOMAIN,
+                translation_key="template_not_valid",
+                translation_placeholders={"template": value_template.template},
+            ) from ex
 
     await hass.config_entries.async_forward_entry_setups(entry, PLATFORMS)
 

@@ -42,5 +42,10 @@
         }
       }
     }
+  },
+  "exceptions": {
+    "template_not_valid": {
+      "message": "O modelo {template} não é válido. Atualize as opções auxiliares para fornecer um modelo válido"
+    }
   }
 }
