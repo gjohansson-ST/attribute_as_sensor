@@ -42,5 +42,10 @@
           }
         }
       }
+    },
+    "exceptions": {
+      "template_not_valid": {
+        "message": "The template {template} is not valid, please update the helper options to provide a valid template"
+      }
     }
   }
