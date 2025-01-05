@@ -70,7 +70,7 @@ async def attribute_schema(handler: SchemaCommonFlowHandler) -> vol.Schema:
 
     return vol.Schema(
         {
-            vol.Optional(CONF_ATTRIBUTE): selector.AttributeSelector(
+            vol.Required(CONF_ATTRIBUTE): selector.AttributeSelector(
                 selector.AttributeSelectorConfig(entity_id=options[CONF_ENTITY_ID])
             ),
         }
