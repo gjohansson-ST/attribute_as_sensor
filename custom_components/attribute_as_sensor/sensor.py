@@ -108,6 +108,8 @@ class AttributeSensor(SensorEntity):
 
         self._value_template = value_template
 
+        self._has_logged = False
+
     async def async_added_to_hass(self) -> None:
         """Handle added to Hass."""
         self.async_on_remove(
@@ -152,12 +154,18 @@ class AttributeSensor(SensorEntity):
                 return
 
         if self._attribute not in new_state.attributes:
-            _LOGGER.error(
-                "Attribute (%s) not found in state attributes for entity %s",
-                self._attribute,
-                self._entity_id,
-            )
-
+            if not self._has_logged:
+                _LOGGER.error(
+                    "Attribute (%s) not found in state attributes for entity %s",
+                    self._attribute,
+                    self._entity_id,
+                )
+            self._has_logged = True
+            self._attr_native_value = STATE_UNAVAILABLE
+            self.async_write_ha_state()
+            return
+        
+        self._has_logged = False
         if new_state and self._attribute in new_state.attributes:
             _LOGGER.debug("State attributes: %s", new_state.attributes)
 
