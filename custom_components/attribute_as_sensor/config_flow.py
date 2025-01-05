@@ -46,12 +46,16 @@ OPTIONS_SCHEMA = vol.Schema(
         vol.Optional(CONF_ICON): selector.IconSelector(),
         vol.Optional(CONF_DEVICE_CLASS): selector.SelectSelector(
             selector.SelectSelectorConfig(
-                options=DEVICE_CLASSES, mode=selector.SelectSelectorMode.DROPDOWN
+                options=DEVICE_CLASSES,
+                mode=selector.SelectSelectorMode.DROPDOWN,
+                translation_key="device_class",
             )
         ),
         vol.Optional(CONF_STATE_CLASS): selector.SelectSelector(
             selector.SelectSelectorConfig(
-                options=STATE_CLASSES, mode=selector.SelectSelectorMode.DROPDOWN
+                options=STATE_CLASSES,
+                mode=selector.SelectSelectorMode.DROPDOWN,
+                translation_key="state_class",
             )
         ),
         vol.Optional(CONF_UNIT_OF_MEASUREMENT): selector.SelectSelector(
