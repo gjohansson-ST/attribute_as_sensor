@@ -164,7 +164,7 @@ class AttributeSensor(SensorEntity):
             self._attr_native_value = STATE_UNAVAILABLE
             self.async_write_ha_state()
             return
-        
+
         self._has_logged = False
         if new_state and self._attribute in new_state.attributes:
             _LOGGER.debug("State attributes: %s", new_state.attributes)
