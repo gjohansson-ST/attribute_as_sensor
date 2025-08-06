@@ -25,7 +25,7 @@ from homeassistant.const import (
 )
 from homeassistant.core import Event, HomeAssistant, State, callback
 from homeassistant.helpers import entity_registry as er
-from homeassistant.helpers.device import async_device_info_to_link_from_entity
+from homeassistant.helpers.device import async_entity_id_to_device
 from homeassistant.helpers.entity_platform import AddEntitiesCallback
 from homeassistant.helpers.event import (
     async_track_state_change_event,
@@ -96,7 +96,7 @@ class AttributeSensor(SensorEntity):
         self._entity_id = entity_id
         self._attribute = attribute
         self._attr_name = name
-        self._attr_device_info = async_device_info_to_link_from_entity(
+        self.device_entry = async_entity_id_to_device(
             hass,
             entity_id,
         )
