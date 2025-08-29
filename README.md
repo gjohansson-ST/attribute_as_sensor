@@ -41,6 +41,12 @@
 - State class: State class (select from list)
 - Unit of measurement: UoM to use in frontend (select from list, only temperature, or write your own)
 
+#### Templating
+
+The result of the choosen attribute is available with the variable `value`.
+
+As example, to divide the attribute value with 100 you can enter your value template as: `{{ ( value | int ) / 100 }}` (convert the value to an integer and then divide it by 100).
+
 ## Installation
 
 ### Option 1 (preferred)
