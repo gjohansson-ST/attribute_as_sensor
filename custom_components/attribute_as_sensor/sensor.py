@@ -141,17 +141,18 @@ class AttributeSensor(SensorEntity):
         new_state: State | None = event.data.get("new_state")
         _LOGGER.debug("Received new state: %s", new_state)
 
-        self._attr_available = new_state != STATE_UNAVAILABLE
-
         self._attr_native_value = None
-        if (
-            new_state is None
-            or new_state.state is None
-            or new_state.state in [STATE_UNAVAILABLE, STATE_UNKNOWN]
-        ):
+        self._attr_available = (
+            new_state is not None
+            and new_state.state is not None
+            and new_state.state not in [STATE_UNAVAILABLE, STATE_UNKNOWN]
+        )
+        if not self._attr_available:
             if not update_state:
                 _LOGGER.debug("Ignoring state update")
                 return
+            self.async_write_ha_state()
+            return
 
         if self._attribute not in new_state.attributes:
             if not self._has_logged:
@@ -161,7 +162,7 @@ class AttributeSensor(SensorEntity):
                     self._entity_id,
                 )
             self._has_logged = True
-            self._attr_native_value = STATE_UNAVAILABLE
+            self._attr_available = False
             self.async_write_ha_state()
             return
 
