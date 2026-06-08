@@ -17,11 +17,11 @@
 
 **Description:** "Create an entity from another entities attribute."
 
-**Version:** 1.6
+**Version:** 2.0
 
 **Date created:** 2023-11-19
 
-**Last update:** 2025-01-05
+**Last update:** 2026-06-08
 
 ---
 
