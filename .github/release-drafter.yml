@@ -6,52 +6,64 @@ sort-direction: ascending
 
 categories:
   - title: "🚨 Breaking changes"
-    labels:
-      - "breaking-change"
+    semver-increment: major
+    when:
+      labels:
+        - "breaking-change"
   - title: "✨ New features"
-    labels:
-      - "new-feature"
+    semver-increment: minor
+    when:
+      labels:
+        - "new-feature"
   - title: "🐛 Bug fixes"
-    labels:
-      - "bugfix"
+    semver-increment: patch
+    when:
+      labels:
+        - "bugfix"
   - title: "🚀 Enhancements"
-    labels:
-      - "enhancement"
-      - "refactor"
-      - "performance"
+    semver-increment: patch
+    when:
+      labels:
+        - "enhancement"
+        - "refactor"
+        - "performance"
   - title: "🧰 Maintenance"
-    labels:
-      - "maintenance"
-      - "ci"
+    semver-increment: patch
+    when:
+      labels:
+        - "maintenance"
+        - "ci"
   - title: "📚 Documentation"
-    labels:
-      - "documentation"
+    semver-increment: patch
+    when:
+      labels:
+        - "documentation"
   - title: "⬆️ Dependency updates"
-    labels:
-      - "dependencies"
+    semver-increment: patch
+    exclusive: true
+    collapse-after: 0
+    when:
+      labels:
+        - "dependencies"
+  - type: "version-resolver"
+    semver-increment: major
+    when:
+      label: "major"
+  - type: "version-resolver"
+    semver-increment: minor
+    when:
+      label: "minor"
+  - type: "version-resolver"
+    semver-increment: patch
 
-version-resolver:
-  major:
-    labels:
-      - "major"
-      - "breaking-change"
-  minor:
-    labels:
-      - "minor"
-      - "new-feature"
-  patch:
-    labels:
-      - "bugfix"
-      - "chore"
-      - "ci"
-      - "dependencies"
-      - "documentation"
-      - "enhancement"
-      - "performance"
-      - "refactor"
-  default: patch
+exclude-contributors:
+  - "renovate"
 
 template: |
   ## What’s changed
 
   $CHANGES
+
+  ## Thanks
+
+  $CONTRIBUTORS
