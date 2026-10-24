@@ -1,0 +1,46 @@
+{
+	"name": "Attribute as Sensor",
+	"image": "mcr.microsoft.com/devcontainers/python:3.14",
+	"postCreateCommand": "scripts/setup.sh",
+	"forwardPorts": [
+		8123
+	],
+	"portsAttributes": {
+		"8123": {
+			"label": "Home Assistant",
+			"onAutoForward": "notify"
+		}
+	},
+	"remoteEnv": {
+		"VIRTUAL_ENV": "${containerWorkspaceFolder}/.venv",
+		"PATH": "${containerWorkspaceFolder}/.venv/bin:${containerEnv:PATH}"
+	},
+	"customizations": {
+		"vscode": {
+			"extensions": [
+				"anthropic.claude-code",
+				"charliermarsh.ruff",
+				"github.vscode-pull-request-github",
+				"ms-python.python",
+				"ms-python.vscode-pylance",
+				"ryanluker.vscode-coverage-gutters"
+			],
+			"settings": {
+				"files.eol": "\n",
+				"editor.tabSize": 4,
+				"editor.formatOnPaste": true,
+				"editor.formatOnSave": true,
+				"editor.formatOnType": false,
+				"files.trimTrailingWhitespace": true,
+				"python.analysis.typeCheckingMode": "basic",
+				"python.analysis.autoImportCompletions": true,
+				"python.defaultInterpreterPath": "${containerWorkspaceFolder}/.venv/bin/python",
+				"[python]": {
+					"editor.defaultFormatter": "charliermarsh.ruff"
+				}
+			}
+		}
+	},
+	"remoteUser": "vscode",
+	"features": {}
+}
