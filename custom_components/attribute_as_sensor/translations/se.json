@@ -16,6 +16,7 @@
             "device_class": "Enhetsklass",
             "state_class": "Tillståndsklass",
             "unit_of_measurement": "Måttenhet",
+            "entity_category": "Entitetskategori",
             "value_template": "Värdemall"
           },
           "data_description": {
@@ -34,6 +35,7 @@
             "device_class": "Enhetsklass",
             "state_class": "Tillståndsklass",
             "unit_of_measurement": "Måttenhet",
+            "entity_category": "Entitetskategori",
             "value_template": "Värdemall"
           },
           "data_description": {

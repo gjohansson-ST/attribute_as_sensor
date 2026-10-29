@@ -16,6 +16,7 @@
           "device_class": "Classe do Dispositivo",
           "state_class": "Classe de Estado",
           "unit_of_measurement": "Unidade de Medida",
+          "entity_category": "Categoria da entidade",
           "value_template": "Modelo de Valor"
         },
         "data_description": {
@@ -34,6 +35,7 @@
           "device_class": "Classe do Dispositivo",
           "state_class": "Classe de Estado",
           "unit_of_measurement": "Unidade de Medida",
+          "entity_category": "Categoria da entidade",
           "value_template": "Modelo de Valor"
         },
         "data_description": {

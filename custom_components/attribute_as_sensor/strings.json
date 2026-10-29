@@ -16,6 +16,7 @@
           "device_class": "Device Class",
           "state_class": "State Class",
           "unit_of_measurement": "Unit of Measurement",
+          "entity_category": "Entity category",
           "value_template": "Value template"
         },
         "data_description": {
@@ -34,6 +35,7 @@
           "device_class": "Device Class",
           "state_class": "State Class",
           "unit_of_measurement": "Unit of Measurement",
+          "entity_category": "Entity category",
           "value_template": "Value template"
         },
         "data_description": {
@@ -106,6 +108,11 @@
         "measurement": "Measurement",
         "total": "Total",
         "total_increasing": "Total increasing"
+      }
+    },
+    "entity_category": {
+      "options": {
+        "diagnostic": "Diagnostic"
       }
     }
   },
