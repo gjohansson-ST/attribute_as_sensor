@@ -13,7 +13,25 @@ jobs:
     name: ✏️ Draft release
     runs-on: ubuntu-latest
     steps:
+      - name: ⤵️ Check out code from GitHub
+        uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: 🔍 Read name and required Home Assistant version
+        id: hacs
+        run: |
+          echo "name=$(jq -r .name custom_components/*/manifest.json)" >> "$GITHUB_OUTPUT"
+          echo "homeassistant=$(jq -r .homeassistant hacs.json)" >> "$GITHUB_OUTPUT"
+
       - name: 🚀 Run Release Drafter
         uses: release-drafter/release-drafter@v7.10.0
+        with:
+          header: |+
+            > 💙 **Enjoying ${{ steps.hacs.outputs.name }}?** Give it a ⭐ on [GitHub](${{ github.server_url }}/${{ github.repository }}) or [become a sponsor](${{ github.server_url }}/sponsors/${{ github.repository_owner }}) to help keep the updates coming!
+
+            ## Required HA version
+            **${{ steps.hacs.outputs.homeassistant }}**
+
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
