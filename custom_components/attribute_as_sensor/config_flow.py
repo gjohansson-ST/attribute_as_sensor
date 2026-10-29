@@ -6,11 +6,7 @@ from collections.abc import Mapping
 from typing import Any, cast
 
 import voluptuous as vol
-from homeassistant.components.sensor import (
-    CONF_STATE_CLASS,
-    DEVICE_CLASSES,
-    STATE_CLASSES,
-)
+from homeassistant.components.sensor import CONF_STATE_CLASS
 from homeassistant.const import (
     CONF_ATTRIBUTE,
     CONF_DEVICE_CLASS,
@@ -21,7 +17,7 @@ from homeassistant.const import (
     CONF_UNIT_OF_MEASUREMENT,
     CONF_VALUE_TEMPLATE,
     EntityCategory,
-    UnitOfTemperature,
+    Platform,
 )
 from homeassistant.helpers import selector
 from homeassistant.helpers.schema_config_entry_flow import (
@@ -46,24 +42,16 @@ OPTIONS_SCHEMA = vol.Schema(
     {
         vol.Optional(CONF_VALUE_TEMPLATE): selector.TemplateSelector(),
         vol.Optional(CONF_ICON): selector.IconSelector(),
-        vol.Optional(CONF_DEVICE_CLASS): selector.SelectSelector(
-            selector.SelectSelectorConfig(
-                options=DEVICE_CLASSES,
-                mode=selector.SelectSelectorMode.DROPDOWN,
-                translation_key="device_class",
-            )
+        vol.Optional(CONF_DEVICE_CLASS): selector.DeviceClassSelector(
+            selector.DeviceClassSelectorConfig(domain=Platform.SENSOR)
         ),
-        vol.Optional(CONF_STATE_CLASS): selector.SelectSelector(
-            selector.SelectSelectorConfig(
-                options=STATE_CLASSES,
-                mode=selector.SelectSelectorMode.DROPDOWN,
-                translation_key="state_class",
-            )
-        ),
-        vol.Optional(CONF_UNIT_OF_MEASUREMENT): selector.SelectSelector(
-            selector.SelectSelectorConfig(
-                options=[UnitOfTemperature.CELSIUS, UnitOfTemperature.FAHRENHEIT],
-                custom_value=True,
+        vol.Optional(CONF_STATE_CLASS): selector.StateClassSelector(),
+        vol.Optional(CONF_UNIT_OF_MEASUREMENT): selector.UnitOfMeasurementSelector(
+            selector.UnitOfMeasurementSelectorConfig(
+                context={
+                    "filter_device_class": CONF_DEVICE_CLASS,
+                    "filter_state_class": CONF_STATE_CLASS,
+                }
             )
         ),
         # Sensors can't use the config category
