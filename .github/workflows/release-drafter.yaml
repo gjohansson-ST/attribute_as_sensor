@@ -21,7 +21,7 @@ jobs:
       - name: 🔍 Read name and required Home Assistant version
         id: hacs
         run: |
-          echo "name=$(jq -r .name hacs.json)" >> "$GITHUB_OUTPUT"
+          echo "name=$(jq -r .name custom_components/*/manifest.json)" >> "$GITHUB_OUTPUT"
           echo "homeassistant=$(jq -r .homeassistant hacs.json)" >> "$GITHUB_OUTPUT"
 
       - name: 🚀 Run Release Drafter
