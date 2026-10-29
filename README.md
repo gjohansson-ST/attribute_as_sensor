@@ -17,7 +17,7 @@
 
 **Description:** "Create an entity from another entities attribute."
 
-**Version:** 2.1.1
+**Version:** 2.2.0
 
 **Date created:** 2023-11-19
 
@@ -40,6 +40,7 @@
 - Device class: Device class (select from list)
 - State class: State class (select from list)
 - Unit of measurement: UoM to use in frontend (select from list, only temperature, or write your own)
+- Entity category: Set to diagnostic to show the sensor under "Diagnostic" on the device page instead of "Sensors"
 
 #### Templating
 

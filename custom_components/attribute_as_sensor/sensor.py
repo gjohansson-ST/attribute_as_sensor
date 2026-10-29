@@ -16,12 +16,14 @@ from homeassistant.const import (
     ATTR_ENTITY_ID,
     CONF_ATTRIBUTE,
     CONF_DEVICE_CLASS,
+    CONF_ENTITY_CATEGORY,
     CONF_ENTITY_ID,
     CONF_ICON,
     CONF_UNIT_OF_MEASUREMENT,
     CONF_VALUE_TEMPLATE,
     STATE_UNAVAILABLE,
     STATE_UNKNOWN,
+    EntityCategory,
 )
 from homeassistant.core import Event, HomeAssistant, State, callback
 from homeassistant.helpers import entity_registry as er
@@ -51,6 +53,9 @@ async def async_setup_entry(
     device_class = config_entry.options.get(CONF_DEVICE_CLASS)
     state_class = config_entry.options.get(CONF_STATE_CLASS)
     uom = config_entry.options.get(CONF_UNIT_OF_MEASUREMENT)
+    entity_category = None
+    if category := config_entry.options.get(CONF_ENTITY_CATEGORY):
+        entity_category = EntityCategory(category)
 
     if value_template := config_entry.options.get(CONF_VALUE_TEMPLATE):
         value_template = Template(value_template, hass)
@@ -65,6 +70,7 @@ async def async_setup_entry(
                 device_class,
                 state_class,
                 uom,
+                entity_category,
                 config_entry.title,
                 config_entry.entry_id,
                 value_template,
@@ -87,6 +93,7 @@ class AttributeSensor(SensorEntity):
         device_class: SensorDeviceClass | None,
         state_class: SensorStateClass | None,
         uom: str | None,
+        entity_category: EntityCategory | None,
         name: str,
         unique_id: str | None,
         value_template: Template | None,
@@ -105,6 +112,7 @@ class AttributeSensor(SensorEntity):
         self._attr_icon = icon
         self._attr_native_unit_of_measurement = uom
         self._attr_state_class = state_class
+        self._attr_entity_category = entity_category
 
         self._value_template = value_template
 
