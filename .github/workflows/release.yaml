@@ -1,0 +1,53 @@
+---
+name: Release
+
+# yamllint disable-line rule:truthy
+on:
+  release:
+    types:
+      - published
+
+jobs:
+  release:
+    name: 📦 Release
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+      id-token: write
+    steps:
+      - name: ⤵️ Check out code from GitHub
+        uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: 🔢 Adjust version number
+        shell: bash
+        env:
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: |
+          version="${RELEASE_TAG}"
+          version="${version,,}"
+          version="${version#v}"
+          yq e -P -o=json \
+            -i ".version = \"${version}\"" \
+            "${{ github.workspace }}/custom_components/attribute_as_sensor/manifest.json"
+
+      - name: 📦 Created zipped release package
+        shell: bash
+        run: |
+          cd "${{ github.workspace }}/custom_components/attribute_as_sensor"
+          zip attribute_as_sensor.zip -r ./
+
+      - name: 🔏 Sign release package
+        uses: sigstore/gh-action-sigstore-python@v3.5.0
+        with:
+          inputs: ${{ github.workspace }}/custom_components/attribute_as_sensor/attribute_as_sensor.zip
+
+      - name: ⬆️ Upload zip to release
+        env:
+          GH_TOKEN: ${{ github.token }}
+          RELEASE_TAG: ${{ github.event.release.tag_name }}
+        run: >-
+          gh release upload "${RELEASE_TAG}"
+          "${{ github.workspace }}/custom_components/attribute_as_sensor/attribute_as_sensor.zip"
+          --clobber
