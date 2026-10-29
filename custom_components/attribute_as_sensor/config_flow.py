@@ -6,6 +6,7 @@ from collections.abc import Mapping
 from typing import Any, cast
 
 import voluptuous as vol
+
 from homeassistant.components.sensor import CONF_STATE_CLASS
 from homeassistant.const import (
     CONF_ATTRIBUTE,

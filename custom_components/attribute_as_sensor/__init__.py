@@ -90,16 +90,17 @@ async def async_migrate_entry(hass: HomeAssistant, config_entry: ConfigEntry) ->
 
     if config_entry.version == 1:
         options = {**config_entry.options}
-        if config_entry.minor_version < 2:
-            # Remove the config entry from the source device
-            if source_device_id := async_entity_id_to_device_id(
+        # Remove the config entry from the source device
+        if config_entry.minor_version < 2 and (
+            source_device_id := async_entity_id_to_device_id(
                 hass, options[CONF_ENTITY_ID]
-            ):
-                async_remove_helper_devices(
-                    hass,
-                    helper_config_entry_id=config_entry.entry_id,
-                    source_device_id=source_device_id,
-                )
+            )
+        ):
+            async_remove_helper_devices(
+                hass,
+                helper_config_entry_id=config_entry.entry_id,
+                source_device_id=source_device_id,
+            )
         hass.config_entries.async_update_entry(
             config_entry, options=options, minor_version=2
         )
