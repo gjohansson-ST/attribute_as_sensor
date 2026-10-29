@@ -39,7 +39,7 @@
 - Icon: Icon to use in frontend
 - Device class: Device class (select from list)
 - State class: State class (select from list)
-- Unit of measurement: UoM to use in frontend (select from list, only temperature, or write your own)
+- Unit of measurement: UoM to use in frontend (select from list limited by the chosen device class and state class, or write your own when neither is set)
 - Entity category: Set to diagnostic to show the sensor under "Diagnostic" on the device page instead of "Sensors"
 
 #### Templating

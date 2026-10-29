@@ -21,7 +21,7 @@
         },
         "data_description": {
           "attribute": "Selecione o atributo que gostaria de usar como sensor.",
-          "unit_of_measurement": "Selecione uma unidade de medida predefinida ou personalize a sua própria.",
+          "unit_of_measurement": "Selecione uma unidade de medida. Com uma classe de dispositivo ou classe de estado selecionada, apenas as unidades válidas para elas são oferecidas; caso contrário, também pode inserir a sua própria.",
           "value_template": "Defina um modelo para extrair o valor do atributo."
         }
       }
@@ -39,7 +39,7 @@
           "value_template": "Modelo de Valor"
         },
         "data_description": {
-          "unit_of_measurement": "Selecione uma unidade de medida predefinida ou personalize a sua própria.",
+          "unit_of_measurement": "Selecione uma unidade de medida. Com uma classe de dispositivo ou classe de estado selecionada, apenas as unidades válidas para elas são oferecidas; caso contrário, também pode inserir a sua própria.",
           "value_template": "Defina um modelo para extrair o valor do atributo."
         }
       }

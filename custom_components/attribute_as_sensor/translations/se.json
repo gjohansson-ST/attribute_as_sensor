@@ -21,7 +21,7 @@
           },
           "data_description": {
             "attribute": "Välj det attribut som du vill ha som sensor.",
-            "unit_of_measurement": "Välj en måttenhet som är fördefinierad eller skapa din egen.",
+            "unit_of_measurement": "Välj en måttenhet. Om en enhetsklass eller tillståndsklass är vald visas bara enheter som passar dem, annars kan du också ange en egen.",
             "value_template": "En mall för att återge sensorns värde baserat på filens innehåll."
           }
         }
@@ -39,7 +39,7 @@
             "value_template": "Värdemall"
           },
           "data_description": {
-            "unit_of_measurement": "Välj en måttenhet som är fördefinierad eller skapa din egen.",
+            "unit_of_measurement": "Välj en måttenhet. Om en enhetsklass eller tillståndsklass är vald visas bara enheter som passar dem, annars kan du också ange en egen.",
             "value_template": "En mall för att återge sensorns värde baserat på filens innehåll."
           }
         }
