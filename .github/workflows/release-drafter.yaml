@@ -30,9 +30,7 @@ jobs:
           header: |+
             > 💙 **Enjoying ${{ steps.hacs.outputs.name }}?** Give it a ⭐ on [GitHub](${{ github.server_url }}/${{ github.repository }}) or [become a sponsor](${{ github.server_url }}/sponsors/${{ github.repository_owner }}) to help keep the updates coming!
 
-            ## What’s changed
-
-            ### Required HA version
+            ## Required HA version
             **${{ steps.hacs.outputs.homeassistant }}**
 
         env:

@@ -59,8 +59,9 @@ categories:
 exclude-contributors:
   - "renovate"
 
-# The heading is in the header input of the workflow, above the required HA version
 template: |
+  ## What’s changed
+
   $CHANGES
 
   ## Thanks
