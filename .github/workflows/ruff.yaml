@@ -1,0 +1,38 @@
+---
+name: Ruff
+
+# yamllint disable-line rule:truthy
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  DEFAULT_PYTHON: "3.14"
+  # Keep in sync with the ruff-pre-commit rev in .pre-commit-config.yaml
+  RUFF_VERSION: "0.17.3"
+
+jobs:
+  ruff:
+    name: Ruff
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⤵️ Check out code from GitHub
+        uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: 🏗 Set up uv
+        uses: astral-sh/setup-uv@v10.3.2
+        with:
+          enable-cache: true
+          python-version: ${{ env.DEFAULT_PYTHON }}
+
+      - name: 🚀 Run ruff linter
+        run: uvx "ruff@${RUFF_VERSION}" check --output-format=github .
+
+      - name: 🚀 Run ruff formatter
+        run: uvx "ruff@${RUFF_VERSION}" format --check .

@@ -1,4 +1,4 @@
-required-version = ">=0.17.1"
+required-version = ">=0.17.3"
 
 [lint.isort]
 force-sort-within-sections = true
