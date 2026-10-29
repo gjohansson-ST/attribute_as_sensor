@@ -13,7 +13,23 @@ jobs:
     name: ✏️ Draft release
     runs-on: ubuntu-latest
     steps:
+      - name: ⤵️ Check out code from GitHub
+        uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: 🔍 Read required Home Assistant version
+        id: hacs
+        run: echo "homeassistant=$(jq -r .homeassistant hacs.json)" >> "$GITHUB_OUTPUT"
+
       - name: 🚀 Run Release Drafter
         uses: release-drafter/release-drafter@v7.10.0
+        with:
+          header: |+
+            ## What’s changed
+
+            ### Required HA version
+            **${{ steps.hacs.outputs.homeassistant }}**
+
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
