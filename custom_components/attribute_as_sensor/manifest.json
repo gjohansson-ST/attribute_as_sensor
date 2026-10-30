@@ -1,6 +1,7 @@
 {
     "domain": "attribute_as_sensor",
     "name": "Attribute as Sensor",
+    "categories": ["helpers.calculate_value"],
     "codeowners": ["@gjohansson-ST"],
     "config_flow": true,
     "documentation": "https://github.com/gjohansson-ST/attribute_as_sensor/blob/master/README.md",
