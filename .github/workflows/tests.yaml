@@ -1,0 +1,42 @@
+---
+name: Tests
+
+# yamllint disable-line rule:truthy
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+    branches:
+      - main
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  DEFAULT_PYTHON: "3.14"
+
+jobs:
+  test:
+    name: Pytest
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⤵️ Check out code from GitHub
+        uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: 🏗 Set up uv
+        uses: astral-sh/setup-uv@v10.3.3
+        with:
+          enable-cache: true
+          python-version: ${{ env.DEFAULT_PYTHON }}
+
+      - name: 🏗 Install dependencies
+        run: |
+          uv venv
+          uv pip install -r requirements_dev.txt
+
+      - name: 🚀 Run tests
+        run: .venv/bin/python -m pytest

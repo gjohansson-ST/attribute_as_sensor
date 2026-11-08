@@ -1,0 +1,13 @@
+[tool.pytest.ini_options]
+addopts = "-p no:respx --cov=custom_components/attribute_as_sensor --cov-report=term-missing --cov-report=xml"
+asyncio_mode = "auto"
+asyncio_default_fixture_loop_scope = "function"
+pythonpath = ["."]
+testpaths = ["tests"]
+
+[tool.coverage.run]
+branch = true
+source = ["custom_components/attribute_as_sensor"]
+
+[tool.coverage.report]
+show_missing = true
