@@ -68,7 +68,9 @@ async def test_migrate_minor_version(
 
 
 async def test_source_entity_removed(
-    hass: HomeAssistant, entity_registry: er.EntityRegistry, options: dict[str, Any]
+    hass: HomeAssistant,
+    entity_registry: er.EntityRegistry,
+    config_entry: MockConfigEntry,
 ) -> None:
     """Test the helper is removed when its source entity is removed."""
     source = entity_registry.async_get_or_create(
@@ -76,13 +78,6 @@ async def test_source_entity_removed(
     )
     assert source.entity_id == SOURCE_ENTITY_ID
     hass.states.async_set(SOURCE_ENTITY_ID, "on", {"temperature": 21.5})
-    config_entry = MockConfigEntry(
-        domain=DOMAIN,
-        title="Temperature",
-        options=options,
-        version=1,
-        minor_version=2,
-    )
     config_entry.add_to_hass(hass)
     await hass.config_entries.async_setup(config_entry.entry_id)
     await hass.async_block_till_done()
