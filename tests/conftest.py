@@ -3,18 +3,13 @@
 from typing import Any
 
 import pytest
-from pytest_homeassistant_custom_component.common import MockConfigEntry
+from pytest_homeassistant.common import MockConfigEntry
 
 from custom_components.attribute_as_sensor.const import DOMAIN
 from homeassistant.core import HomeAssistant
 
 SOURCE_ENTITY_ID = "sensor.source"
 SENSOR_ENTITY_ID = "sensor.temperature"
-
-
-@pytest.fixture(autouse=True)
-def auto_enable_custom_integrations(enable_custom_integrations: None) -> None:
-    """Enable custom integrations in all tests."""
 
 
 @pytest.fixture
