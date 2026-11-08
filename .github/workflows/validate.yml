@@ -11,7 +11,7 @@ jobs:
     runs-on: "ubuntu-latest"
     steps:
       - uses: "actions/checkout@v7.0.1"
-      - name: HACS validation
+      - name: Marketplace validation
         uses: "hacs/action@main"
         with:
           category: "integration"

@@ -1,4 +1,4 @@
-[![hacs_badge](https://img.shields.io/badge/HACS-Default-orange.svg?style=for-the-badge&cacheSeconds=3600)](https://github.com/hacs/integration)
+[![marketplace_badge](https://img.shields.io/badge/Marketplace-Default-orange.svg?style=for-the-badge&logo=homeassistant&cacheSeconds=3600)](https://www.home-assistant.io/integrations/marketplace/)
 [![size_badge](https://img.shields.io/github/repo-size/gjohansson-ST/attribute_as_sensor?style=for-the-badge&cacheSeconds=3600)](https://github.com/gjohansson-ST/attribute_as_sensor)
 [![version_badge](https://img.shields.io/github/v/release/gjohansson-ST/attribute_as_sensor?label=Latest%20release&style=for-the-badge&cacheSeconds=3600)](https://github.com/gjohansson-ST/attribute_as_sensor/releases/latest)
 [![download_badge](https://img.shields.io/github/downloads/gjohansson-ST/attribute_as_sensor/total?style=for-the-badge&cacheSeconds=3600)](https://github.com/gjohansson-ST/attribute_as_sensor/releases/latest)
@@ -52,8 +52,11 @@ As example, to divide the attribute value with 100 you can enter your value temp
 
 ### Option 1 (preferred)
 
-Use [HACS](https://hacs.xyz/) to install
-Add as [custom repository](https://hacs.xyz/docs/faq/custom_repositories) to HACS
+Install from the [Marketplace](https://www.home-assistant.io/integrations/marketplace/) in Home Assistant:
+
+[![Open your Home Assistant instance and open a repository inside the Marketplace.](https://my.home-assistant.io/badges/marketplace_repository.svg)](https://my.home-assistant.io/redirect/marketplace_repository/?owner=gjohansson-ST&repository=attribute_as_sensor&category=integration)
+
+Or add it from **Settings** > **Marketplace** > **Add from link** with `gjohansson-ST/attribute_as_sensor`.
 
 ### Option 2
 
