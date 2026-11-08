@@ -136,6 +136,11 @@ class AttributeSensor(SensorEntity):
         state_event = Event("", {"entity_id": self._entity_id, "new_state": state})
         self._async_attribute_sensor_state_listener(state_event, update_state=False)
 
+    @callback
+    def async_entity_id_changed(self, old_entity_id: str) -> None:
+        """Opt in to in-place entity_id changes."""
+        super().async_entity_id_changed(old_entity_id)
+
     @property
     def extra_state_attributes(self) -> dict[str, Any]:
         """Return the state attributes of the sensor."""
