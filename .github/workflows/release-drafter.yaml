@@ -19,7 +19,7 @@ jobs:
           persist-credentials: false
 
       - name: 🔍 Read name and required Home Assistant version
-        id: hacs
+        id: marketplace
         run: |
           echo "name=$(jq -r .name custom_components/*/manifest.json)" >> "$GITHUB_OUTPUT"
           echo "homeassistant=$(jq -r .homeassistant hacs.json)" >> "$GITHUB_OUTPUT"
@@ -28,10 +28,10 @@ jobs:
         uses: release-drafter/release-drafter@v7.10.0
         with:
           header: |+
-            > 💙 **Enjoying ${{ steps.hacs.outputs.name }}?** Give it a ⭐ on [GitHub](${{ github.server_url }}/${{ github.repository }}) or [become a sponsor](${{ github.server_url }}/sponsors/${{ github.repository_owner }}) to help keep the updates coming!
+            > 💙 **Enjoying ${{ steps.marketplace.outputs.name }}?** Give it a ⭐ on [GitHub](${{ github.server_url }}/${{ github.repository }}) or [become a sponsor](${{ github.server_url }}/sponsors/${{ github.repository_owner }}) to help keep the updates coming!
 
             ## Required HA version
-            **${{ steps.hacs.outputs.homeassistant }}**
+            **${{ steps.marketplace.outputs.homeassistant }}**
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
