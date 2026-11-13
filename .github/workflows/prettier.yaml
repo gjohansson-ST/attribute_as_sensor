@@ -1,0 +1,28 @@
+---
+name: Prettier
+
+# yamllint disable-line rule:truthy
+on:
+  pull_request:
+  push:
+  workflow_dispatch:
+
+permissions:
+  contents: read
+
+env:
+  # Keep in sync with the mirrors-prettier rev in .pre-commit-config.yaml
+  PRETTIER_VERSION: "3.10.0"
+
+jobs:
+  prettier:
+    name: Prettier
+    runs-on: ubuntu-latest
+    steps:
+      - name: ⤵️ Check out code from GitHub
+        uses: actions/checkout@v7.0.1
+        with:
+          persist-credentials: false
+
+      - name: 🚀 Run prettier
+        run: npx --yes "prettier@${PRETTIER_VERSION}" --check "**/*.{json,js,md,yml,yaml}"
