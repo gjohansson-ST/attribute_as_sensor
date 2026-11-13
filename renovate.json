@@ -35,6 +35,11 @@
       "automerge": true
     },
     {
+      "matchManagers": ["devcontainer"],
+      "addLabels": ["python"],
+      "rangeStrategy": "pin"
+    },
+    {
       "matchPackageNames": ["homeassistant", "pytest-homeassistant"],
       "groupName": "Home Assistant"
     }
