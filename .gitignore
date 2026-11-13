@@ -167,3 +167,6 @@ cython_debug/
 
 # Node
 node_modules/
+
+# VS Code local settings
+.vscode/settings.json
