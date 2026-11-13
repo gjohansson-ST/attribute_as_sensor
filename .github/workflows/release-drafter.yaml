@@ -18,11 +18,22 @@ jobs:
         with:
           persist-credentials: false
 
+      # yamllint disable rule:line-length
       - name: 🔍 Read name and required Home Assistant version
         id: marketplace
         run: |
-          echo "name=$(jq -r .name custom_components/*/manifest.json)" >> "$GITHUB_OUTPUT"
-          echo "homeassistant=$(jq -r .homeassistant hacs.json)" >> "$GITHUB_OUTPUT"
+          if [ -f hacs.json ]; then
+            echo "name=$(jq -r .name custom_components/*/manifest.json)" >> "$GITHUB_OUTPUT"
+            {
+              echo "homeassistant<<EOF"
+              echo "## Required HA version"
+              echo "**$(jq -r .homeassistant hacs.json)**"
+              echo "EOF"
+            } >> "$GITHUB_OUTPUT"
+          else
+            name=$(python3 -c 'import tomllib; d = tomllib.load(open("pyproject.toml", "rb")); print(d.get("project", {}).get("name") or d["tool"]["poetry"]["name"])')
+            echo "name=${name}" >> "$GITHUB_OUTPUT"
+          fi
 
       - name: 🚀 Run Release Drafter
         uses: release-drafter/release-drafter@v7.10.0
@@ -30,8 +41,7 @@ jobs:
           header: |+
             > 💙 **Enjoying ${{ steps.marketplace.outputs.name }}?** Give it a ⭐ on [GitHub](${{ github.server_url }}/${{ github.repository }}) or [become a sponsor](${{ github.server_url }}/sponsors/${{ github.repository_owner }}) to help keep the updates coming!
 
-            ## Required HA version
-            **${{ steps.marketplace.outputs.homeassistant }}**
+            ${{ steps.marketplace.outputs.homeassistant }}
 
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
