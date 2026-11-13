@@ -29,6 +29,9 @@
 - name: "dependencies"
   color: 1d76db
   description: "Upgrade or downgrade of project dependencies."
+- name: "github_actions"
+  color: 1d76db
+  description: "Updates of GitHub Actions used by the workflows."
 
 - name: "in-progress"
   color: fbca04
