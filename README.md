@@ -12,7 +12,9 @@
 [![Discord](https://img.shields.io/discord/872446427664625664?style=for-the-badge&label=Discord&cacheSeconds=3600)](https://discord.gg/EG7cWFQMGW)
 
 # Home Assistant create an entities attribute as it's own sensor
+
 ---
+
 **Title:** "Attribute as Sensor"
 
 **Description:** "Create an entity from another entities attribute."

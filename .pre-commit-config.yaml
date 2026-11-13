@@ -19,3 +19,8 @@ repos:
     hooks:
       - id: check-json
         exclude: ^\.(vscode|devcontainer)/
+  - repo: https://github.com/rbubley/mirrors-prettier
+    rev: v3.10.0
+    hooks:
+      - id: prettier
+        types_or: [yaml, json, markdown]
