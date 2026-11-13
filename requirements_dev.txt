@@ -1,5 +1,5 @@
 debugpy==1.8.22
-homeassistant==2026.11.0
+homeassistant==2026.11.1
 prek==0.5.10
-pytest-homeassistant==2026.11.0
+pytest-homeassistant==2026.11.1
 pytest-cov==7.1.0
