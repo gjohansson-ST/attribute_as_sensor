@@ -36,7 +36,7 @@ jobs:
           fi
 
       - name: 🚀 Run Release Drafter
-        uses: release-drafter/release-drafter@v7.10.0
+        uses: release-drafter/release-drafter@v7.11.0
         with:
           header: |+
             > 💙 **Enjoying ${{ steps.marketplace.outputs.name }}?** Give it a ⭐ on [GitHub](${{ github.server_url }}/${{ github.repository }}) or [become a sponsor](${{ github.server_url }}/sponsors/${{ github.repository_owner }}) to help keep the updates coming!
