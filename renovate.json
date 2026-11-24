@@ -41,7 +41,8 @@
     },
     {
       "matchPackageNames": ["homeassistant", "pytest-homeassistant"],
-      "groupName": "Home Assistant"
+      "groupName": "Home Assistant",
+      "allowedVersions": "/^\\d+\\.\\d+\\.0$/"
     }
   ]
 }
